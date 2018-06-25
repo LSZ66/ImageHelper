@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">老铁修图</string>
+    <string name="primary_color">基础调整</string>
+    <string name="hue">色相</string>
+    <string name="sat">饱和度</string>
+    <string name="lum">亮度</string>
+    <string name="filter">滤镜效果</string>
+    <string name="select">选择图片</string>
+    <string name="ori">原始效果</string>
+    <string name="old">老图效果</string>
+    <string name="negative">负片效果</string>
+    <string name="relief">浮雕效果</string>
+    <string name="save">保存</string>
+</resources>
