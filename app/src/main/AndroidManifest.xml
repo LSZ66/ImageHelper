@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".PrimaryColor" />
         <activity android:name=".PixelsEffect" />
-        <activity android:name=".PicList" />
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
     </application>
 
 </manifest>
