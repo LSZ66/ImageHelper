@@ -2,12 +2,9 @@ package cn.lsz.image;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -65,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == Crop.REQUEST_CROP) {
             Toast.makeText(getApplicationContext(), "请先选择图片", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void btnCrop(View view) {
+
     }
 
     public void saveImage(View view) {

@@ -28,20 +28,6 @@ abstract class MonitoredActivity extends Activity {
 
     private final ArrayList<LifeCycleListener> listeners = new ArrayList<LifeCycleListener>();
 
-    public static interface LifeCycleListener {
-        public void onActivityCreated(MonitoredActivity activity);
-        public void onActivityDestroyed(MonitoredActivity activity);
-        public void onActivityStarted(MonitoredActivity activity);
-        public void onActivityStopped(MonitoredActivity activity);
-    }
-
-    public static class LifeCycleAdapter implements LifeCycleListener {
-        public void onActivityCreated(MonitoredActivity activity) {}
-        public void onActivityDestroyed(MonitoredActivity activity) {}
-        public void onActivityStarted(MonitoredActivity activity) {}
-        public void onActivityStopped(MonitoredActivity activity) {}
-    }
-
     public void addLifeCycleListener(LifeCycleListener listener) {
         if (listeners.contains(listener)) return;
         listeners.add(listener);
@@ -80,6 +66,30 @@ abstract class MonitoredActivity extends Activity {
         super.onStop();
         for (LifeCycleListener listener : listeners) {
             listener.onActivityStopped(this);
+        }
+    }
+
+    public static interface LifeCycleListener {
+        public void onActivityCreated(MonitoredActivity activity);
+
+        public void onActivityDestroyed(MonitoredActivity activity);
+
+        public void onActivityStarted(MonitoredActivity activity);
+
+        public void onActivityStopped(MonitoredActivity activity);
+    }
+
+    public static class LifeCycleAdapter implements LifeCycleListener {
+        public void onActivityCreated(MonitoredActivity activity) {
+        }
+
+        public void onActivityDestroyed(MonitoredActivity activity) {
+        }
+
+        public void onActivityStarted(MonitoredActivity activity) {
+        }
+
+        public void onActivityStopped(MonitoredActivity activity) {
         }
     }
 

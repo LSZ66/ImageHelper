@@ -218,54 +218,6 @@ public class CropImageActivity extends MonitoredActivity {
         );
     }
 
-    private class Cropper {
-
-        private void makeDefault() {
-            if (rotateBitmap == null) {
-                return;
-            }
-
-            HighlightView hv = new HighlightView(imageView);
-            final int width = rotateBitmap.getWidth();
-            final int height = rotateBitmap.getHeight();
-
-            Rect imageRect = new Rect(0, 0, width, height);
-
-            // Make the default size about 4/5 of the width or height
-            int cropWidth = Math.min(width, height) * 4 / 5;
-            @SuppressWarnings("SuspiciousNameCombination")
-            int cropHeight = cropWidth;
-
-            if (aspectX != 0 && aspectY != 0) {
-                if (aspectX > aspectY) {
-                    cropHeight = cropWidth * aspectY / aspectX;
-                } else {
-                    cropWidth = cropHeight * aspectX / aspectY;
-                }
-            }
-
-            int x = (width - cropWidth) / 2;
-            int y = (height - cropHeight) / 2;
-
-            RectF cropRect = new RectF(x, y, x + cropWidth, y + cropHeight);
-            hv.setup(imageView.getUnrotatedMatrix(), imageRect, cropRect, aspectX != 0 && aspectY != 0);
-            imageView.add(hv);
-        }
-
-        public void crop() {
-            handler.post(new Runnable() {
-                public void run() {
-                    makeDefault();
-                    imageView.invalidate();
-                    if (imageView.highlightViews.size() == 1) {
-                        cropView = imageView.highlightViews.get(0);
-                        cropView.setFocus(true);
-                    }
-                }
-            });
-        }
-    }
-
     private void onSaveClicked() {
         if (cropView == null || isSaving) {
             return;
@@ -438,6 +390,54 @@ public class CropImageActivity extends MonitoredActivity {
 
     private void setResultException(Throwable throwable) {
         setResult(Crop.RESULT_ERROR, new Intent().putExtra(Crop.Extra.ERROR, throwable));
+    }
+
+    private class Cropper {
+
+        private void makeDefault() {
+            if (rotateBitmap == null) {
+                return;
+            }
+
+            HighlightView hv = new HighlightView(imageView);
+            final int width = rotateBitmap.getWidth();
+            final int height = rotateBitmap.getHeight();
+
+            Rect imageRect = new Rect(0, 0, width, height);
+
+            // Make the default size about 4/5 of the width or height
+            int cropWidth = Math.min(width, height) * 4 / 5;
+            @SuppressWarnings("SuspiciousNameCombination")
+            int cropHeight = cropWidth;
+
+            if (aspectX != 0 && aspectY != 0) {
+                if (aspectX > aspectY) {
+                    cropHeight = cropWidth * aspectY / aspectX;
+                } else {
+                    cropWidth = cropHeight * aspectX / aspectY;
+                }
+            }
+
+            int x = (width - cropWidth) / 2;
+            int y = (height - cropHeight) / 2;
+
+            RectF cropRect = new RectF(x, y, x + cropWidth, y + cropHeight);
+            hv.setup(imageView.getUnrotatedMatrix(), imageRect, cropRect, aspectX != 0 && aspectY != 0);
+            imageView.add(hv);
+        }
+
+        public void crop() {
+            handler.post(new Runnable() {
+                public void run() {
+                    makeDefault();
+                    imageView.invalidate();
+                    if (imageView.highlightViews.size() == 1) {
+                        cropView = imageView.highlightViews.get(0);
+                        cropView.setFocus(true);
+                    }
+                }
+            });
+        }
     }
 
 }

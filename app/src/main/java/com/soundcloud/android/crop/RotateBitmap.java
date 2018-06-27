@@ -32,12 +32,12 @@ class RotateBitmap {
         this.rotation = rotation % 360;
     }
 
-    public void setRotation(int rotation) {
-        this.rotation = rotation;
-    }
-
     public int getRotation() {
         return rotation;
+    }
+
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
     }
 
     public Bitmap getBitmap() {
