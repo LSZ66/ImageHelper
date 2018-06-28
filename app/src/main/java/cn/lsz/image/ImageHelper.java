@@ -6,6 +6,10 @@ import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+
+import static android.view.View.LAYER_TYPE_SOFTWARE;
 
 /**
  * Created by LSZ on 2018/04/28
@@ -160,6 +164,19 @@ public class ImageHelper {
             newPx[i] = Color.argb(a, r, g, b);
         }
         bmp.setPixels(newPx, 0, width, 0, 0, width, height);
+        return bmp;
+    }
+
+    public static Bitmap roundRect(Bitmap bm, int arc) {
+        Bitmap bmp = Bitmap.createBitmap(bm.getWidth(), bm.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bmp);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        // Dst
+        canvas.drawRoundRect(0, 0, bm.getWidth(), bm.getHeight(), arc, arc, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        // Src
+        canvas.drawBitmap(bm, 0, 0, paint);
+        canvas.drawBitmap(bmp, 0, 0, null);
         return bmp;
     }
 }
