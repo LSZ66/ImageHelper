@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">老铁修图</string>
+    <string name="app_name">美图卉通</string>
     <string name="primary_color">基础调整</string>
     <string name="hue">色相</string>
     <string name="sat">饱和度</string>
@@ -12,10 +12,5 @@
     <string name="relief">浮雕效果</string>
     <string name="roundRec">圆角效果</string>
     <string name="save">保存</string>
-    <string name="crop__saving">正在保存照片…</string>
-    <string name="crop__wait">请等待…</string>
-    <string name="crop__pick_error">无效的图片</string>
-    <string name="crop__done">完成</string>
-    <string name="crop__cancel">取消</string>
     <string name="round">弧度</string>
 </resources>

@@ -2,13 +2,13 @@ package cn.lsz.image;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-public class RoundRetActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class RoundRet extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private Bitmap ori, change;
     private ImageView imageView;
